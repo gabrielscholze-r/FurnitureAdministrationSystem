@@ -1,14 +1,21 @@
+require('dotenv').config()
 const express = require('express');
 // const session = require('express-session');
 // const fileupload = require('express-fileupload');
 // const fs = require('fs');
-// const cors = require('cors');
+const cors = require('cors');
 const app = express();
+process.env.PASSWORD
 // var path = require('path');
 require('./config/dbConfig')
 app.use(express.json())
 const routes = require('./routes')
-
+app.use(cors())
+var corsOptions = {
+    origin: 'http://localhost:3001',
+    optionsSucessStatus: '200'
+}
+app.use(cors(corsOptions))
 
 
 
@@ -21,10 +28,6 @@ const port = 5000;
 //     useTempFiles: true,
 //     tempFileDir: path.join(__dirname, 'temp')
 // }));
-// app.use(cors());
 app.use(routes)
-// app.get('/Home',(req,res)=>{
-//     res.json([{'título': 'Noticia boa dimais'}])
-// })
 
 app.listen(port, () =>{console.log("rodando porta 5000")});

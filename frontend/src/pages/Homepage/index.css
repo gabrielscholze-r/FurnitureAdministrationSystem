@@ -1,0 +1,37 @@
+.header{
+    /* text-align: center; */
+    /* align-items: center; */
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+    width: 100%;
+    box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.385);
+}
+.header-logo{
+    width:125px;
+}
+.exitbutton{
+    background-color: #FFFFFF;
+    border: 0;
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #263964;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    padding: 0.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.395), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+  }
+  .exitbutton:hover{
+      background-color: rgb(249,250,251);
+  }
+  .exitbutton:focus{
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+  }
+  .exitbutton:focus-visible{
+      box-shadow: none;
+  }

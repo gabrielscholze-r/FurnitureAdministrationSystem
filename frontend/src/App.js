@@ -15,17 +15,17 @@ function App() {
   //     console.log(res.data);
   //   })
   // }, [])
-  const [logged, setLogged] = useState(false)
+  const [logged, setLogged] = useState(true)
 
 
   return (
     <div className="App">
-      {/* <BrowserRouter> */}
+      <BrowserRouter>
         <AuthContext.Provider value={[logged, setLogged]}>
-          {/* <Rotas /> */}
-          <CreateFurniture/>
+          <Rotas />
+          {/* <CreateFurniture/> */}
         </AuthContext.Provider>
-      {/* </BrowserRouter> */}
+      </BrowserRouter>
     </div>
 
   )

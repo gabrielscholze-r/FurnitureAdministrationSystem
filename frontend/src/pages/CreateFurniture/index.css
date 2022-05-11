@@ -1,0 +1,179 @@
+.body {
+    font-family: system-ui, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    /* text-align: center; */
+    /* align-items: center; */
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+    width: 100%;
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.385);
+}
+
+.px-5 {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.header-logo {
+    width: 125px;
+}
+
+.exitbutton {
+    transition: 0.2s;
+    background-color: #FFFFFF;
+    border: 0;
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #263964;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    padding: 0.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.395), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+}
+
+.exitbutton:hover {
+    background-color: rgb(249, 250, 251);
+}
+
+.exitbutton:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+
+.exitbutton:focus-visible {
+    box-shadow: none;
+}
+
+/*========================================*/
+
+/*Form*/
+.creation-container {
+    align-items: center;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.form-field {
+    margin-top: 25px;
+    display: block;
+    text-align: center;
+}
+
+.form-field-radio {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+}
+
+input[type="radio"].radio-button {
+    
+    margin: 0 15px;
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    /* Remove most all native input styles */
+    appearance: none;
+    /* For iOS < 15 */
+    /* Not removed via appearance */
+    /* margin: 0; */
+
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 50%;
+    transform: translateY(-0.075em);
+
+    display: grid;
+    place-content: center;
+}
+
+input[type="radio"].radio-button::before {
+    
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+    /* Windows High Contrast Mode */
+    background-color: CanvasText;
+}
+
+input[type="radio"].radio-button:checked::before {
+    transform: scale(1);
+}
+
+input[type="radio"].radio-button:focus {
+    outline: max(2px, 0.15em) solid currentColor;
+    outline-offset: max(2px, 0.15em);
+}
+
+.label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.text-input {
+    background-color: transparent;
+    font-size: 20px;
+    border: 0;
+    border-bottom: 2px solid rgba(11, 38, 192, 0.5);
+    outline: 0;
+    width: 50%;
+}
+
+.text-input:focus {
+    border-bottom: 2px solid;
+    border-color: rgb(11, 192, 162);
+}
+
+.text-input:focus::placeholder {
+    color: transparent;
+}
+
+.number-input::-webkit-outer-spin-button, .number-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.back {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.76);
+    background-color: rgba(255, 0, 0, 0.507);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 7rem;
+    transition: 0.2s;
+}
+.back:hover{
+    
+    background-color: rgba(255, 0, 0, 0.151);
+    
+}
+
+.buttons {
+    justify-content: center;
+    text-align: center;
+    display: grid;
+}
+.subtitle{
+    font-weight: 100;
+    color: #263964;
+}
+.under-header{
+    margin-top: 1.2rem;
+}

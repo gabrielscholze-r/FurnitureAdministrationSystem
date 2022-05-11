@@ -11,27 +11,28 @@
 .header-logo{
     width:125px;
 }
-.exitbutton{
+.filterbutton{
+    font-size: 15px;
+    /* width: max-content; */
     background-color: #FFFFFF;
     border: 0;
     border-radius: .5rem;
     box-sizing: border-box;
     color: #263964;
-    font-size: 1rem;
     font-weight: 600;
     line-height: 1.25rem;
-    padding: 0.5rem 2rem;
+    padding: 0.2rem 1.2rem;
     text-align: center;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.395), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     cursor: pointer;
   }
-  .exitbutton:hover{
+  .filterbutton:hover{
       background-color: rgb(249,250,251);
   }
-  .exitbutton:focus{
+  .filterbutton:focus{
       outline: 2px solid transparent;
       outline-offset: 2px;
   }
-  .exitbutton:focus-visible{
+  .filterbutton:focus-visible{
       box-shadow: none;
   }

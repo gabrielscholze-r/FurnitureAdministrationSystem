@@ -9,8 +9,8 @@ export default function CreateFurniture() {
     const [name, setName] = useState("");
     const [price, setPrice] = useState(0);
     const [amount, setAmount] = useState(0)
-    function HandleSubmit() {
-        API.post(`/${furniture}`, {
+    async function HandleSubmit() {
+        await API.post(`/${furniture}`, {
             name: name,
             price: price,
             qtd: amount

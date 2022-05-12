@@ -3,25 +3,17 @@ import logo from '../../assets/img/logo.png';
 import './index.css';
 import API from '../../config/js/API';
 import { toBeEmpty } from '@testing-library/jest-dom/dist/matchers';
+import Furniture from '../../components/furniture/Furniture';
 function Homepage() {
-    var dict = {};
-
-    useEffect(() => {
-        API.get(`/${furniture}`).then(res => dict = res.data);
-    }, [])
     const [furniture, setFurniture] = useState("sofa");
-    var d;
-    function getFurnitures() {
-        // API.get(`/${furniture}`).then((res) => { console.log(res.data) });
-        console.log(dict)
-    }
-    function renderDict() {
-        var d = [];
-        for (var i in dict) {
-            Object.entries(dict[i]).map(([key, value]) => d.push())
+    const [allFurnitures, setFurns] = useState([]);
+    useEffect(()=>{
+        async function getAllFurnitures(){
+            const response = await API.get(`/${furniture}`)
+            setFurns(response.data)
         }
-        return <div>{d}</div>;
-    }
+        getAllFurnitures()
+    },[])
     return (
         <div>
             <header className="header">
@@ -35,9 +27,13 @@ function Homepage() {
                     <option value="chair" >Chair</option>
                     <option value="table">Table</option>
                 </select>
-                <button className="filterbutton" onClick={e => getFurnitures()}>Aplicar</button>
-                {renderDict}
-                <button className="filterbutton" onClick={e => d = renderDict()}>sadadsasd</button>
+                <button className="filterbutton">Aplicar</button>
+                <button className="filterbutton">sadadsasd</button>
+                {allFurnitures.map(data => 
+                (
+                    <Furniture data={data}/>
+                )
+                )}
             </div>
             
 

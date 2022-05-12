@@ -1,0 +1,14 @@
+.content-container{
+    align-items: center;
+    display: flex;
+    border: 1px solid black;
+}
+.subtitle-furniture{
+    color: rgba(30, 6, 141, 0.533);
+    font-size: 25px;
+    font-weight: 600;
+}
+.info-furniture{
+    font-size: 20px;
+    font-weight: 600;
+}

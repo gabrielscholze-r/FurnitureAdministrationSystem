@@ -1,4 +1,4 @@
-.header{
+.header {
     /* text-align: center; */
     /* align-items: center; */
     align-items: center;
@@ -8,10 +8,12 @@
     width: 100%;
     box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.385);
 }
-.header-logo{
-    width:125px;
+
+.header-logo {
+    width: 125px;
 }
-.filterbutton{
+
+.filterbutton {
     font-size: 15px;
     /* width: max-content; */
     background-color: #FFFFFF;
@@ -25,14 +27,39 @@
     text-align: center;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.395), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     cursor: pointer;
-  }
-  .filterbutton:hover{
-      background-color: rgb(249,250,251);
-  }
-  .filterbutton:focus{
-      outline: 2px solid transparent;
-      outline-offset: 2px;
-  }
-  .filterbutton:focus-visible{
-      box-shadow: none;
-  }
+}
+
+.filterbutton:hover {
+    background-color: rgb(249, 250, 251);
+}
+
+.filterbutton:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+
+.filterbutton:focus-visible {
+    box-shadow: none;
+}
+
+.furniture-container {
+    margin-right: 25%;
+    text-align: center;
+    margin-left: 25%;
+}
+
+.select-input, option {
+    cursor: pointer;
+    background-color: DodgerBlue;
+}
+
+.select-input:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+}

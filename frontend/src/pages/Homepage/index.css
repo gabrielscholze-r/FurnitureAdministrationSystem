@@ -40,8 +40,12 @@
 }
 
 .filter-search {
+    text-align: center;
     justify-content: center;
-    display: grid;
+    display: inline-block;
     align-items: center;
-    width: 100%;
+    width: 70%;
+}
+.homepage-container{
+    text-align: center;
 }

@@ -1,6 +1,6 @@
 .content-container{
     justify-content: space-evenly;
-    width: 600px;
+    width:100%;
     align-items: center;
     display: flex;
     border: 1px solid black;

@@ -11,8 +11,7 @@ function Login() {
     let history = useHistory()
     function authenticate() {
         alert("funfou")
-        // setLogged(true)
-        history.push("/Home")
+        setLogged(true)
 
     } 
     return (

@@ -1,4 +1,6 @@
 .content-container{
+    justify-content: space-evenly;
+    width: 600px;
     align-items: center;
     display: flex;
     border: 1px solid black;
@@ -11,4 +13,21 @@
 .info-furniture{
     font-size: 20px;
     font-weight: 600;
+}
+.exclude-signal{
+    border: 1px solid red;
+    border-radius: 100%;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    transition: 0.2s;
+    
+}
+.exclude-signal:hover{
+    filter: drop-shadow(0 0 0.1rem crimson);
+    transform: rotate(180deg);
+}
+.body-furniture{
+    align-items: center;
+    display: flex;
 }

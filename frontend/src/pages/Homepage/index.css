@@ -13,53 +13,35 @@
     width: 125px;
 }
 
-.filterbutton {
-    font-size: 15px;
-    /* width: max-content; */
-    background-color: #FFFFFF;
-    border: 0;
-    border-radius: .5rem;
-    box-sizing: border-box;
-    color: #263964;
-    font-weight: 600;
-    line-height: 1.25rem;
-    padding: 0.2rem 1.2rem;
-    text-align: center;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.395), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-    cursor: pointer;
-}
-
-.filterbutton:hover {
-    background-color: rgb(249, 250, 251);
-}
-
-.filterbutton:focus {
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-}
-
-.filterbutton:focus-visible {
-    box-shadow: none;
-}
-
 .furniture-container {
-    margin-right: 25%;
     text-align: center;
-    margin-left: 25%;
 }
 
-.select-input, option {
+.select-input {
     cursor: pointer;
-    background-color: DodgerBlue;
+    width: 100%;
+    margin-bottom: 1em;
+    padding: .25em;
+    border: 0;
+    border: 2px solid currentcolor;
+    font-weight: bold;
+    letter-spacing: .15em;
+    border-radius: 0;
 }
 
-.select-input:after {
-    position: absolute;
-    content: "";
-    top: 14px;
-    right: 10px;
-    width: 0;
-    height: 0;
-    border: 6px solid transparent;
-    border-color: #fff transparent transparent transparent;
+.select-input:focus {
+    outline: 0;
+    border-color: rgb(0, 221, 255);
+}
+
+.select-input:active {
+    outline: 0;
+    border-bottom-color: rgb(33, 25, 144);
+}
+
+.filter-search {
+    justify-content: center;
+    display: grid;
+    align-items: center;
+    width: 100%;
 }

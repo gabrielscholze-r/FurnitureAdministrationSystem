@@ -34,21 +34,21 @@ module.exports = {
         
     },
 
-    async update(req, res){
-        const {id} = req.params;
-        const chair = await Chair.findOne({_id: id});
-        if(!mongoose.Types.ObjectId.isValid(id)){
-            return res.status(401).json({error: "Registro não encontrado"});
-        }
-        if(chair.qtd==1){
-            const DeletedChair = await Chair.findByIdAndDelete(id);
-            return 0;
-        }
-        chair.qtd -= 1;
+    // async update(req, res){
+    //     const {id} = req.params;
+    //     const chair = await Chair.findOne({_id: id});
+    //     if(!mongoose.Types.ObjectId.isValid(id)){
+    //         return res.status(401).json({error: "Registro não encontrado"});
+    //     }
+    //     if(chair.qtd==1){
+    //         const DeletedChair = await Chair.findByIdAndDelete(id);
+    //         return 0;
+    //     }
+    //     chair.qtd -= 1;
 
-        await chair.save();
-        return res.json(chair);
+    //     await chair.save();
+    //     return res.json(chair);
 
 
-    }
+    // }
 }

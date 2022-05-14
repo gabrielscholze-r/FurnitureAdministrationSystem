@@ -23,7 +23,6 @@ function App() {
       <BrowserRouter>
         <AuthContext.Provider value={[logged, setLogged]}>
           <Rotas />
-          {/* <CreateFurniture/> */}
         </AuthContext.Provider>
       </BrowserRouter>
     </div>

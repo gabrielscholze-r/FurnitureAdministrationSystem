@@ -33,21 +33,21 @@ module.exports = {
         return res.json(sofaDeleted);
         
     },
-    async update(req, res){
-        const {id} = req.params;
-        const sofa = await Sofa.findOne({_id: id});
-        if(!mongoose.Types.ObjectId.isValid(id)){
-            return res.status(401).json({error: "Registro não encontrado"});
-        }
-        if(sofa.qtd==1){
-            await Sofa.findByIdAndDelete(id);
-            return 0;
-        }
-        sofa.qtd -= 1;
+    // async update(req, res){
+    //     const {id} = req.params;
+    //     const sofa = await Sofa.findOne({_id: id});
+    //     if(!mongoose.Types.ObjectId.isValid(id)){
+    //         return res.status(401).json({error: "Registro não encontrado"});
+    //     }
+    //     if(sofa.qtd==1){
+    //         await Sofa.findByIdAndDelete(id);
+    //         return 0;
+    //     }
+    //     sofa.qtd -= 1;
 
-        await sofa.save();
-        return res.json(sofa);
+    //     await sofa.save();
+    //     return res.json(sofa);
 
 
-    }
+    // }
 }

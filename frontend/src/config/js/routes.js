@@ -1,25 +1,39 @@
-import React, {useContext} from 'react';
-import {Switch} from 'react-router-dom'
+import React, { useContext } from 'react';
+import { Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom'
 import Homepage from '../../pages/Homepage/index.js';
 import Login from '../../pages/Login';
 import AuthContext from './auth';
-
+import CreateFurniture from '../../pages/CreateFurniture'
+import { useHistory } from 'react-router-dom';
 
 function Rotas() {
+    let history = useHistory()
     const [Logged, setLogged] = useContext(AuthContext)
-    function rota(Logged){
-        if(Logged){
+    function rota(Logged) {
+        if (Logged) {
             return (
-                <Switch path="/Home"><Homepage/></Switch>
+                <Switch>
+                    <Route exact path="/">
+                        <Homepage />
+                    </Route>
+                    <Route path="/Home"><Homepage /></Route>
+                </Switch>
             )
         }
-        else{
-            return (<Switch path="/Login"><Login/></Switch>)
+        else {
+            return (
+                <Switch >
+                    <Route exact path="/"><Login /></Route>
+                    <Route exact path="/Login"><Login /></Route>
+
+                </Switch>
+            )
         }
     }
     return (
         <>
-        {rota(Logged)}
+            {rota(Logged)}
         </>
     )
 }

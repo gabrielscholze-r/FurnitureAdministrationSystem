@@ -32,22 +32,22 @@ module.exports = {
 
     },
 
-    async update(req, res){
-        const {id} = req.params;
-        const table = await Table.findOne({_id: id});
-        if(!mongoose.Types.ObjectId.isValid(id)){
-            return res.status(401).json({error: "Registro não encontrado"});
-        }
-        if(table.qtd==1){
-            const DeletedTable = await Table.findByIdAndDelete(id);
-            return 0;
-        }
-        table.qtd -= 1;
+    // async update(req, res){
+    //     const {id} = req.params;
+    //     const table = await Table.findOne({_id: id});
+    //     if(!mongoose.Types.ObjectId.isValid(id)){
+    //         return res.status(401).json({error: "Registro não encontrado"});
+    //     }
+    //     if(table.qtd==1){
+    //         const DeletedTable = await Table.findByIdAndDelete(id);
+    //         return 0;
+    //     }
+    //     table.qtd -= 1;
 
-        await table.save();
-        return res.json(table);
+    //     await table.save();
+    //     return res.json(table);
 
 
-    }
+    // }
 
 }

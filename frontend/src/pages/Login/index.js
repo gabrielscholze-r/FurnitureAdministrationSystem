@@ -10,9 +10,7 @@ function Login() {
     const [Logged, setLogged] = useContext(AuthContext)
     let history = useHistory()
     function authenticate() {
-        alert("funfou")
         setLogged(true)
-
     } 
     return (
         <div >

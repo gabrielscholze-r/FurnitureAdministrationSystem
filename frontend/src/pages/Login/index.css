@@ -59,3 +59,6 @@ input.form__field:focus::placeholder{
 .loginbutton:focus-visible{
     box-shadow: none;
 }
+.error-message{
+    color: #ff0000;
+}

@@ -1,13 +1,15 @@
 require('dotenv').config()
-const express = require('express');
-// const session = require('express-session');
-// const fileupload = require('express-fileupload');
-// const fs = require('fs');
-const cors = require('cors');
-const app = express();
-process.env.PASSWORD
-// var path = require('path');
 require('./config/dbConfig')
+const express = require('express');
+const cors = require('cors');
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken")
+const app = express();
+
+app.get('/Login', (req,res)=>{
+    res.status(200).json({msg: "bem vindo"})
+})
+
 app.use(express.json())
 const routes = require('./routes')
 app.use(cors())
@@ -17,17 +19,7 @@ var corsOptions = {
 }
 app.use(cors(corsOptions))
 
-
-
-
 const port = 5000;
-
-// app.use(session({secret: 'qwertyuiopasdfghjklzxcvbnm'}));
-// app.use(express.json());
-// app.use(fileupload({
-//     useTempFiles: true,
-//     tempFileDir: path.join(__dirname, 'temp')
-// }));
 app.use(routes)
 
 app.listen(port, () =>{console.log("rodando porta 5000")});

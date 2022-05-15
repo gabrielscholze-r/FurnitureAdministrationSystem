@@ -18,5 +18,8 @@ routes.post('/chair', ChairController.create);
 routes.get('/chair', ChairController.read);
 routes.delete('/chair/:id', ChairController.delete);
 
+const UserController = require("./controllers/UserController");
+routes.post('/user/login', UserController.login);
+
 
 module.exports = routes;

@@ -8,21 +8,17 @@ import Rotas from './config/js/routes';
 import API from './config/js/API';
 import axios from 'axios';
 import CreateFurniture from './pages/CreateFurniture';
-
+import ContentContext from './config/js/content';
 function App() {
-  // useEffect(() =>{
-  //   API.get('Home').then(res=>{
-  //     console.log(res.data);
-  //   })
-  // }, [])
   const [logged, setLogged] = useState(true)
-
-
+  const [content, setContent] = useState(0)
   return (
     <div className="App">
       <BrowserRouter>
         <AuthContext.Provider value={[logged, setLogged]}>
-          <Rotas />
+          <ContentContext.Provider value={[content, setContent]}>
+            <Rotas />
+          </ContentContext.Provider>
         </AuthContext.Provider>
       </BrowserRouter>
     </div>

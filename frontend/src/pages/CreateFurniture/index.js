@@ -18,10 +18,6 @@ export default function CreateFurniture() {
     }
     return (
         <div className="body">
-            <header className="header">
-                <div className="px-5"><img src={logo} alt="logo" class="header-logo" /></div>
-                <div className="px-5"><button class="exitbutton" role="button">Sair</button></div>
-            </header>
             <div className="under-header">
             <h1>Adicionar Móvel</h1>
             <div className="creation-container">

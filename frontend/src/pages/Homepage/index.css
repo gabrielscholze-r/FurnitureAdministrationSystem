@@ -49,11 +49,10 @@
 .homepage-container{
     text-align: center;
 }
-.add-furniture{
-    width: 20px;
-    transition: 0.2s;
+.content-changer{
     cursor: pointer;
+    transition: 0.2s;
 }
-.add-furniture:hover{
-    transform: rotate(90deg);
+.content-changer:hover{
+    opacity: 0.8;
 }

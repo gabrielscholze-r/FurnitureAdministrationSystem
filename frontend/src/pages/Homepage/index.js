@@ -4,13 +4,17 @@ import './index.css';
 import API from '../../config/js/API';
 import Furniture from '../../components/furniture';
 import AuthContext from '../../config/js/auth'
+import ContentContext from '../../config/js/content'
 import AddSignal from '../../assets/img/AddSignal.png'
 import { useHistory } from 'react-router-dom';
+import CreateFurniture from '../CreateFurniture/index'
+import FurnitureList from '../../components/FurnitureList';
 
 function Homepage() {
     const [furniture, setFurniture] = useState("sofa");
     const [allFurnitures, setFurns] = useState([]);
     const [isLogged, setLogged] = useContext(AuthContext)
+    const [content, setContent] = useContext(ContentContext)
     let history = useHistory()
     useEffect(() => {
         async function getAllFurnitures() {
@@ -19,30 +23,19 @@ function Homepage() {
         }
         getAllFurnitures()
     }, [furniture])
-    
-    
+
 
     return (
         <div className="homepage-container">
             <header className="header">
-                <div><img src={AddSignal} alt="addfurniture" className="add-furniture" /></div>
+                <div><img src={logo} alt="addfurniture" className="header-logo" /></div>
+                <h4 className="content-changer" style={(content==0) ? {color:"#c50e29"}:{color:"black"}} onClick={e => {setContent(0)}}>Home</h4>
+                <h4 className="content-changer" style={(content==1) ? {color:"#c50e29"}:{color:"black"}} onClick={e => {setContent(1)}}>Create</h4>
                 <div className="px-5"><button className="exitbutton" role="button" onClick={e => { setLogged(false) }}>Sair</button></div>
             </header>
-            <div className='filter-search mt-5'>
-                <select className="select-input" name="furniture" value={furniture} onChange={e => setFurniture(e.target.value)}>
-                    <option value="sofa" >Sofa</option>
-                    <option value="chair" >Chair</option>
-                    <option value="table">Table</option>
-                </select>
-                <div className="furniture-container">
-                    {allFurnitures.map(data =>
-                    (
-                        <Furniture data={data} furniture={furniture} />
-                    )
-                    )}
-                </div>
-
-            </div>
+            {  
+                (content == 0) ? (<FurnitureList data={allFurnitures}/>) : (<CreateFurniture/>)
+            }
 
 
 

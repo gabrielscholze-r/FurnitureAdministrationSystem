@@ -1,17 +1,19 @@
 import React, { useContext, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
 import API from '../../config/js/API';
 // import Header from '../../components/Header';
 import AuthContext from '../../config/js/auth';
 import './index.css'
 import logo from '../../assets/img/logo.png'
+import { Alert } from 'react-bootstrap';
+import { useCookies } from 'react-cookie';
 
 function Login() {
     const [Logged, setLogged] = useContext(AuthContext)
     const [user, setUser] = useState("")
+    const [cookies, setCookies] = useCookies(['auth'])
     const [password, setPassword] = useState("")
-    const [message, setMessage] = useState("")
+    const [message, setMessage] = useState(false)
     let history = useHistory()
     async function authenticate() {
         try {
@@ -19,14 +21,26 @@ function Login() {
                 user,
                 password
             })
-            if(result.data.msg===1){
-                console.log("logou")
+            if (result.data.msg === 1) {
+                setCookies('log', "true",{path: '/'})
+                setMessage(false)
                 setLogged(true)
             }
         } catch (error) {
-            setMessage("Usuário incorreto!")
+            setMessage(true)
             setUser("")
             setPassword("")
+        }
+    }
+    function LoginError() {
+        if (message) {
+            return (
+                <Alert variant="danger" onClose={() => setMessage(false)} className="danger-alert">
+                    <Alert.Heading>Usuário ou senha incorretos</Alert.Heading>
+
+                </Alert>
+            )
+
         }
     }
     return (
@@ -39,7 +53,8 @@ function Login() {
                 <div className="content">
                     <h1>LOGIN</h1>
                 </div>
-                <h4 className="error-message">{message}</h4>
+                <div> {LoginError()}</div>
+               
                 <div className="content">
                     <div class="form__group field">
                         <input type="input" class="form__field" value={user} placeholder="Name" required onChange={e => setUser(e.target.value)} />

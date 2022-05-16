@@ -62,3 +62,7 @@ input.form__field:focus::placeholder{
 .error-message{
     color: #ff0000;
 }
+.danger-alert{
+    width: max-content;
+    margin: auto;
+}

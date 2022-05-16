@@ -6,9 +6,11 @@ import Login from '../../pages/Login';
 import AuthContext from './auth';
 import CreateFurniture from '../../pages/CreateFurniture'
 import { useHistory } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 function Rotas() {
     let history = useHistory()
+    const [cookies, setCookies] = useCookies(['auth'])
     const [Logged, setLogged] = useContext(AuthContext)
     function rota(Logged) {
         if (Logged) {
@@ -22,6 +24,9 @@ function Rotas() {
             )
         }
         else {
+            if(cookies.log=="true"){
+                setLogged(true)
+            }
             return (
                 <Switch >
                     <Route exact path="/"><Login /></Route>

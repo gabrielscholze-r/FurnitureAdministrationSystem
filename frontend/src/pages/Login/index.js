@@ -22,25 +22,15 @@ function Login() {
                 password
             })
             if (result.data.msg === 1) {
+                setLogged(true)
                 setCookies('log', "true",{path: '/'})
                 setMessage(false)
-                setLogged(true)
+                
             }
         } catch (error) {
             setMessage(true)
             setUser("")
             setPassword("")
-        }
-    }
-    function LoginError() {
-        if (message) {
-            return (
-                <Alert variant="danger" onClose={() => setMessage(false)} className="danger-alert">
-                    <Alert.Heading>Usuário ou senha incorretos</Alert.Heading>
-
-                </Alert>
-            )
-
         }
     }
     return (
@@ -53,7 +43,10 @@ function Login() {
                 <div className="content">
                     <h1>LOGIN</h1>
                 </div>
-                <div> {LoginError()}</div>
+                <div> <Alert show={message} variant="danger" onClose={() => setMessage(false)} className="danger-alert">
+                    <Alert.Heading>Usuário ou senha incorretos</Alert.Heading>
+
+                </Alert></div>
                
                 <div className="content">
                     <div class="form__group field">

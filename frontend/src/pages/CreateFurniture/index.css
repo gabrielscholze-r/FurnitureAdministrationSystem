@@ -177,3 +177,7 @@ input[type="radio"].radio-button:focus {
 .under-header{
     margin-top: 1.2rem;
 }
+.success-alert{
+    width: max-content;
+    margin: auto;
+}

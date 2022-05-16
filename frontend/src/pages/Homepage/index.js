@@ -29,7 +29,8 @@ function Homepage() {
     function logoff() {
         setLogged(false); 
         setCookies('log', "", { path: '/' })
-        history.push('/')
+        // history.push('/Login')
+        window.location.reload(false)
         
     }
     return (

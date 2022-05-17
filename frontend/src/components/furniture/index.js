@@ -10,6 +10,7 @@ export default function Furniture({data, furniture}){
             window.location.reload(false);
         }
     }
+    
     return (
         <div className="body-furniture">
         <img src={excludeSignal} alt="exclude_signal" className="exclude-signal mr-1" onClick={e => DeleteFurniture()}/>
@@ -23,7 +24,7 @@ export default function Furniture({data, furniture}){
             <h3 className="subtitle-furniture px-2">Amount:</h3>
             <h4 className="info-furniture pr-3">{data.qtd}</h4>
             
-        </div>
+            </div>
         
         </div>
     )

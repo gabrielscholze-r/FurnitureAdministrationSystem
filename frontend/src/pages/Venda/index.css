@@ -1,0 +1,40 @@
+.shop-car{
+    border: 1px solid black;
+    width: 40%;
+}
+.shop-list{
+    border: 1px solid black;
+    width: 60%;
+}
+.select-input {
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 1em;
+    padding: .25em;
+    border: 0;
+    border: 2px solid currentcolor;
+    font-weight: bold;
+    letter-spacing: .15em;
+    border-radius: 0;
+    transition: 0.2s ;
+}
+.select-input:hover{
+    border-color: rgb(0, 255, 149);
+}
+.select-input:focus {
+    outline: 0;
+    border-color: rgb(0, 221, 255);
+}
+
+.select-input:active {
+    outline: 0;
+    border-bottom-color: rgb(33, 25, 144);
+}
+.add_to_kart{
+    width: 6%;
+    cursor:pointer;
+    transition: 0.1s ease-in;
+}
+.add_to_kart:hover{
+    filter: drop-shadow(0px 0px 2px green);
+}

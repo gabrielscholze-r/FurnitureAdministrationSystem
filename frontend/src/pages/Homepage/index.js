@@ -10,6 +10,7 @@ import { useHistory } from 'react-router-dom';
 import CreateFurniture from '../CreateFurniture/index'
 import FurnitureList from '../../components/FurnitureList';
 import { useCookies } from 'react-cookie';
+import Venda from '../Venda';
 
 function Homepage() {
     const [furniture, setFurniture] = useState("sofa");
@@ -27,11 +28,11 @@ function Homepage() {
     }, [furniture])
 
     function logoff() {
-        setLogged(false); 
+        setLogged(false);
         setCookies('log', "", { path: '/' })
         // history.push('/Login')
         window.location.reload(false)
-        
+
     }
     return (
         <div className="homepage-container">
@@ -39,10 +40,15 @@ function Homepage() {
                 <div><img src={logo} alt="addfurniture" className="header-logo" /></div>
                 <h4 className="content-changer" style={(content == 0) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(0) }}>Home</h4>
                 <h4 className="content-changer" style={(content == 1) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(1) }}>Create</h4>
+                <h4 className="content-changer" style={(content == 2) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(2) }}>Sale</h4>
                 <div className="px-5"><button className="exitbutton" role="button" onClick={e => { logoff() }}>Sair</button></div>
             </header>
             {
-                (content == 0) ? (<FurnitureList data={allFurnitures} />) : (<CreateFurniture />)
+                {
+                    0: <FurnitureList />,
+                    1: <CreateFurniture />,
+                    2: <Venda />
+                }[content]
             }
 
 

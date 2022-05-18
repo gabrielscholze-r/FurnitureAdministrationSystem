@@ -1,0 +1,29 @@
+.body-furniture-pedido{
+    
+    align-items: center;
+    display: flex;
+}
+.content-container{
+    justify-content: space-evenly;
+    width:100%;
+    align-items: center;
+    display: flex;
+    border: 1px solid black;
+}
+.subtitle-furniture{
+    color: rgba(30, 6, 141, 0.533);
+    font-size: 25px;
+    font-weight: 600;
+}
+.finalizar-pedido{
+    width: 20%;
+}
+.final-pedido-container{
+    text-align: center;
+    display: flex;
+    width: 100%;
+}
+.kart-content{
+    width: 80%;
+    display: grid;
+}

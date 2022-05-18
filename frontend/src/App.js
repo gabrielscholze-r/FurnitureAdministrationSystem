@@ -9,19 +9,23 @@ import API from './config/js/API';
 import axios from 'axios';
 import CreateFurniture from './pages/CreateFurniture';
 import ContentContext from './config/js/content';
-import {CookiesProvider} from 'react-cookie'
+import KartShop from './config/js/kart';
+import { CookiesProvider } from 'react-cookie'
 function App() {
   const [logged, setLogged] = useState(false)
   const [content, setContent] = useState(0)
+  const [kart, setKart] = useState([])
   return (
     <div className="App">
       <BrowserRouter>
-      <CookiesProvider>
-        <AuthContext.Provider value={[logged, setLogged]}>
-          <ContentContext.Provider value={[content, setContent]}>
-            <Rotas />
-          </ContentContext.Provider>
-        </AuthContext.Provider>
+        <CookiesProvider>
+          <AuthContext.Provider value={[logged, setLogged]}>
+            <ContentContext.Provider value={[content, setContent]}>
+              <KartShop.Provider value={[kart, setKart]}>
+                <Rotas />
+              </KartShop.Provider>
+            </ContentContext.Provider>
+          </AuthContext.Provider>
         </CookiesProvider>
       </BrowserRouter>
     </div>

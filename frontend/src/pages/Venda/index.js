@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import './index.css'
 import API from '../../config/js/API'
 import Furniture from '../../components/furniture';
 import greenplus from '../../assets/img/greenplus.png'
+import KartShop from '../../config/js/kart';
 
 function Venda() {
-  const [shopcar, setShopcar] = useState([])
+  let shopcar = []
   const [furniture, setFurniture] = useState("sofa")
   const [allFurnitures, setFurns] = useState([])
 
@@ -25,7 +26,9 @@ function Venda() {
       data.qtd = 1;
       shopcar.push(data)
     }
-    console.log(shopcar)
+    console.log(typeof (shopcar))
+    console.log(typeof (allFurnitures))
+
   }
   return (
     <div className="d-flex p-4">
@@ -36,31 +39,25 @@ function Venda() {
           <option value="table">Table</option>
         </select>
         <div className="furniture-container">
-          {/* {allFurnitures.map(data =>
-          (
-            <Furniture data={data} furniture={furniture} />
-          )
-          )} */
-            allFurnitures.map(data => (
-              <div className="body-furniture">
-                <div className="content-container py-3 my-1">
-                  <h3 className="subtitle-furniture px-2">Nome:</h3>
-                  <h4 className="info-furniture">{data.name}</h4>
-                  <br />
-                  <h3 className="subtitle-furniture px-2">Price:</h3>
-                  <h4 className="info-furniture">{data.price}</h4>
-                  <br />
-                  <h3 className="subtitle-furniture px-2">Amount:</h3>
-                  <h4 className="info-furniture pr-3">{data.qtd}</h4>
-                </div>
-                <img src={greenplus} alt="add_to_kart" class="add_to_kart" onClick={e => addKart(data)} />
+          {allFurnitures.map(data => (
+            <div className="body-furniture">
+              <div className="content-container py-3 my-1">
+                <h3 className="subtitle-furniture px-2">Nome:</h3>
+                <h4 className="info-furniture">{data.name}</h4>
+                <br />
+                <h3 className="subtitle-furniture px-2">Price:</h3>
+                <h4 className="info-furniture">{data.price}</h4>
+                <br />
+                <h3 className="subtitle-furniture px-2">Amount:</h3>
+                <h4 className="info-furniture pr-3">{data.qtd}</h4>
               </div>
-            ))}
-
+              <img src={greenplus} alt="add_to_kart" class="add_to_kart" onClick={e => addKart(data)} />
+            </div>
+          ))}
         </div>
       </div>
       <div className="px-2 shop-car">
-        {/* {shopcar.map(data => (
+        {shopcar.map(data => (
           <div className="body-furniture">
             <div className="content-container py-3 my-1">
               <h3 className="subtitle-furniture px-2">Nome:</h3>
@@ -72,9 +69,8 @@ function Venda() {
               <h3 className="subtitle-furniture px-2">Amount:</h3>
               <h4 className="info-furniture pr-3">{data.qtd}</h4>
             </div>
-            <img src={greenplus} alt="add_to_kart" class="add_to_kart" onClick={e => addKart(data)} />
           </div>
-        ))} */}
+        ))}
       </div>
     </div>
   );

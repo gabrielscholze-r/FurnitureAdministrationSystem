@@ -8,11 +8,12 @@ import { useHistory } from 'react-router-dom';
 import CreateFurniture from '../CreateFurniture/index'
 import { useCookies } from 'react-cookie';
 import shoppingcar from '../../assets/img/shoppingcart.png'
-import KartShop from '../../config/js/kart';
+// import KartShop from '../../config/js/kart';
 import shopcartblack from '../../assets/img/shopcartblack.svg'
 import ShoppKart from '../../components/ShoppKart';
 function Homepage() {
-    const [cart, setCart] = useContext(KartShop)
+    // const [cart, setCart] = useContext(KartShop)
+    const [cart, setCart] = useState([])
     const [furniture, setFurniture] = useState("sofa");
     const [allFurnitures, setFurns] = useState([]);
     const [isLogged, setLogged] = useContext(AuthContext)
@@ -27,6 +28,8 @@ function Homepage() {
         }
         getAllFurnitures()
     }, [furniture])
+
+    
 
     function logoff() {
         setLogged(false);
@@ -45,6 +48,7 @@ function Homepage() {
             shopcar.push(data)
         }
         setCart(shopcar)
+        localStorage.setItem('kart', JSON.stringify(shopcar))
         alert("adicionou ao carrinho!")
     }
 
@@ -56,7 +60,7 @@ function Homepage() {
                 <h4 className="content-changer" style={(content == 1) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(1) }}>Create</h4>
                 {/* <img src={shopcartblack} alt="shopping_cart" style={(content==2) ? { color: "#c50e29" } : { color: "black" }} class="kart" onClick={e => { setContent(2) }}/> */}
                 {/* <h4 className="content-changer" style={(content == 2) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(2) }}>Sale</h4> */}
-                <span className="material-symbols-outlined kart" style={(content==2) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(2) }}>
+                <span className="material-symbols-outlined kart" style={(content == 2) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(2) }}>
                     shopping_cart
                 </span>
                 <div className="px-5"><button className="exitbutton" role="button" onClick={e => { logoff() }}>Sair</button></div>

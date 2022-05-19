@@ -27,3 +27,15 @@
     width: 80%;
     display: grid;
 }
+.exclude-signal{
+    width: fit-content;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 50px;
+    color: red;
+    transition: 0.2s;
+}
+.exclude-signal:hover{
+    transform: rotate(90deg);
+    filter: drop-shadow(0 0 0.5px red);
+}

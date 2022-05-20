@@ -4,10 +4,28 @@ import './index.css'
 
 function ShoppKart() {
     const [shopkart, setKart] = useState([])
-    useEffect(() => {
+    const [total, setTotal] = useState(0)
+
+    function updateList(){
         const items = JSON.parse(localStorage.getItem('kart'));
-        if (items) { setKart(items) }
-    }, [JSON.parse(localStorage.getItem("kart"))])
+        if (items) {
+            setKart(items)
+        }
+
+        updateTotal(items)
+    }
+    useEffect(() => {
+        updateList()
+    }, [])
+
+    function updateTotal(items) {
+        var soma = 0
+        items.map(data => {
+            soma += (data.qtd * data.price)
+        })
+        setTotal(soma)
+        console.log(total)
+    }
 
     function delItem(data) {
         var shop = shopkart
@@ -20,18 +38,23 @@ function ShoppKart() {
         else {
             var data2 = shop.find(x => x === data)
             data2.qtd = data.qtd - 1
-            // console.log(data.qtd)
             shop[shop.indexOf(data)] = data2
-
             setKart(shop)
             localStorage.setItem('kart', JSON.stringify(shopkart))
-            console.log(data2)
         }
+        updateList()
     }
-    return (
-        <div className='final-pedido-container px-4'>
 
-            <div className="kart-content">
+    function buy(kart){
+        // get deleted dict
+        // compare qtd
+        // if kart_item.qtd==deleted.qtd then do nothing
+        // else deleted.qtd = deleted.qtd-kart
+    }
+
+    return (
+        <div className='final-pedido-container p-1'>
+            <div className="kart-content p-2">
                 {shopkart.map(data => (
                     <div className="body-furniture-pedido">
                         <span class="material-symbols-outlined exclude-signal" onClick={e => delItem(data)}>
@@ -49,10 +72,11 @@ function ShoppKart() {
                         </div>
                     </div>
                 ))}
-
             </div>
-            <div className="finalizar-pedido">
-                <button>Finalizar Pedido</button>
+            <div className="finalizar-pedido p-2">
+                <h4>Total</h4>
+                <p className="font-weight-bold text-success">R${total}</p>
+                <button className="buy-button py-1 px-3">Finalizar Pedido</button>
             </div>
         </div>
     );

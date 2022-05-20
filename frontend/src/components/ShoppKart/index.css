@@ -39,3 +39,16 @@
     transform: rotate(90deg);
     filter: drop-shadow(0 0 0.5px red);
 }
+.buy-button{
+    transition: 0.2s;
+    outline: 0;
+    background-color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 40%), 0 1px 2px 0 rgb(0 0 0 / 6%);
+    font-weight: 500;
+}
+.buy-button:hover{
+    background-color: rgba(255, 255, 255, 0.662);
+}

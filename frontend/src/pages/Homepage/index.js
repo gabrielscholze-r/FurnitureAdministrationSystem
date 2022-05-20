@@ -29,7 +29,7 @@ function Homepage() {
         getAllFurnitures()
     }, [furniture])
 
-    
+
 
     function logoff() {
         setLogged(false);
@@ -42,12 +42,23 @@ function Homepage() {
         let shopcar = cart
         if (shopcar.includes(data)) {
             shopcar[shopcar.indexOf(data)].qtd += 1
+            setCart(shopcar)
+            // if (shopcar[shopcar.indexOf(data)].qtd < data.qtd) {
+            //     console.log("uepa")
+            //     shopcar[shopcar.indexOf(data)].qtd += 1
+            //     setCart(shopcar)
+            // }
+            // else{
+            //     alert("Todos ja foram adiciona")
+            // }
+
         }
         else {
-            data.qtd = 1;
-            shopcar.push(data)
+            let newData = data;
+            newData.qtd = 1;
+            shopcar.push(newData)
+            setCart(shopcar)
         }
-        setCart(shopcar)
         localStorage.setItem('kart', JSON.stringify(shopcar))
         alert("adicionou ao carrinho!")
     }

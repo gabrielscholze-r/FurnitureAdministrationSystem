@@ -21,5 +21,7 @@ routes.delete('/chair/:id', ChairController.delete);
 const UserController = require("./controllers/UserController");
 routes.post('/user/login', UserController.login);
 
+const SaleRecord = require('./controllers/SaleRecordController');
+routes.post('/record',SaleRecord.create)
 
 module.exports = routes;

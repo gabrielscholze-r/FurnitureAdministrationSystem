@@ -50,6 +50,7 @@ function ShoppKart() {
         // compare qtd
         // if kart_item.qtd==deleted.qtd then do nothing
         // else deleted.qtd = deleted.qtd-kart
+        
     }
 
     return (

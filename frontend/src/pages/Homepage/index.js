@@ -5,14 +5,12 @@ import API from '../../config/js/API';
 import AuthContext from '../../config/js/auth'
 import ContentContext from '../../config/js/content'
 import { useHistory } from 'react-router-dom';
-import CreateFurniture from '../CreateFurniture/index'
+import CreateFurniture from '../../components/CreateFurniture/index'
 import { useCookies } from 'react-cookie';
 import shoppingcar from '../../assets/img/shoppingcart.png'
-// import KartShop from '../../config/js/kart';
-import shopcartblack from '../../assets/img/shopcartblack.svg'
 import ShoppKart from '../../components/ShoppKart';
+import Report from '../../components/Report';
 function Homepage() {
-    // const [cart, setCart] = useContext(KartShop)
     const [cart, setCart] = useState([])
     const [furniture, setFurniture] = useState("sofa");
     const [allFurnitures, setFurns] = useState([]);
@@ -25,7 +23,7 @@ function Homepage() {
         const response = await API.get(`/${furniture}`)
         setFurns(response.data)
     }
-    
+
 
 
     useEffect(() => {
@@ -54,14 +52,14 @@ function Homepage() {
                     localStorage.setItem('kart', JSON.stringify(shopcar))
                     alert("adicionou ao carrinho!")
                     getAllFurnitures()
-                    
+
                 }
-                else{
+                else {
                     alert("Todos ja adicionados")
                 }
             }
         })
-        if(!bool){
+        if (!bool) {
             var newData = data;
             newData.qtd = 1;
             shopcar.push(newData)
@@ -70,56 +68,56 @@ function Homepage() {
             alert("adicionou ao carrinho!")
             getAllFurnitures()
         }
-        
+
     }
 
 
 
 
-return (
-    <div className="homepage-container">
-        <header className="header">
-            <div><img src={logo} alt="addfurniture" className="header-logo" /></div>
-            <h4 className="content-changer" style={(content == 0) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(0) }}>Home</h4>
-            <h4 className="content-changer" style={(content == 1) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(1) }}>Adicionar</h4>
-            {/* <img src={shopcartblack} alt="shopping_cart" style={(content==2) ? { color: "#c50e29" } : { color: "black" }} class="kart" onClick={e => { setContent(2) }}/> */}
-            {/* <h4 className="content-changer" style={(content == 2) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(2) }}>Sale</h4> */}
-            <span className="material-symbols-outlined kart" style={(content == 2) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(2) }}>
-                shopping_cart
-            </span>
-            <div className="px-5"><button className="exitbutton" role="button" onClick={e => { logoff() }}>Sair</button></div>
-        </header>
-        {
+    return (
+        <div className="homepage-container">
+            <header className="header">
+                <div><img src={logo} alt="addfurniture" className="header-logo" /></div>
+                <h4 className="content-changer" style={(content == 0) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(0) }}>List</h4>
+                <h4 className="content-changer" style={(content == 1) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(1) }}>Add</h4>
+                <span className="material-symbols-outlined kart" style={(content == 2) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(2) }}>
+                    shopping_cart
+                </span>
+                <h4 className="content-changer" style={(content == 3) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(3) }}>Report</h4>
+                <div className="px-5"><button className="exitbutton" role="button" onClick={e => { logoff() }}>Sair</button></div>
+            </header>
             {
-                0: <div className='filter-search mt-5'>
-                    <select className="select-input" name="furniture" value={furniture} onChange={e => setFurniture(e.target.value)}>
-                        <option value="sofa" >Sofa</option>
-                        <option value="chair" >Chair</option>
-                        <option value="table">Table</option>
-                    </select>
-                    {allFurnitures.map(í => (
-                        <div className="body-furniture">
-                            <img src={shoppingcar} alt="shopping_cart" class="add_kart" onClick={e => add_kart(í)} />
-                            <div className="content-container py-3 my-1">
-                                <h3 className="subtitle-furniture px-2">Nome:</h3>
-                                <h4 className="info-furniture">{í.name}</h4>
-                                <br />
-                                <h3 className="subtitle-furniture px-2">Price:</h3>
-                                <h4 className="info-furniture">{í.price}</h4>
-                                <br />
-                                <h3 className="subtitle-furniture px-2">Amount:</h3>
-                                <h4 className="info-furniture pr-3">{í.qtd}</h4>
+                {
+                    0: <div className='filter-search mt-5'>
+                        <select className="select-input" name="furniture" value={furniture} onChange={e => setFurniture(e.target.value)}>
+                            <option value="sofa" >Sofa</option>
+                            <option value="chair" >Chair</option>
+                            <option value="table">Table</option>
+                        </select>
+                        {allFurnitures.map(í => (
+                            <div className="body-furniture">
+                                <img src={shoppingcar} alt="shopping_cart" class="add_kart" onClick={e => add_kart(í)} />
+                                <div className="content-container py-3 my-1">
+                                    <h3 className="subtitle-furniture px-2">Nome:</h3>
+                                    <h4 className="info-furniture">{í.name}</h4>
+                                    <br />
+                                    <h3 className="subtitle-furniture px-2">Price:</h3>
+                                    <h4 className="info-furniture">{í.price}</h4>
+                                    <br />
+                                    <h3 className="subtitle-furniture px-2">Amount:</h3>
+                                    <h4 className="info-furniture pr-3">{í.qtd}</h4>
+                                </div>
                             </div>
-                        </div>
-                    ))} </div>,
-                1: <CreateFurniture />,
-                2: <ShoppKart />
-            }[content]
-        }
+                        ))} </div>,
+                    1: <CreateFurniture />,
+                    2: <ShoppKart />,
+                    3: <Report />
+                }[content]
+            }
 
 
 
-    </div>
-)
+        </div>
+    )
 }
 export default Homepage;

@@ -23,5 +23,6 @@ routes.post('/user/login', UserController.login);
 
 const SaleRecord = require('./controllers/SaleRecordController');
 routes.post('/record',SaleRecord.create)
+routes.get('/record',SaleRecord.read)
 
 module.exports = routes;

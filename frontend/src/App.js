@@ -7,7 +7,6 @@ import LoginPage from './pages/Login'
 import Rotas from './config/js/routes';
 import API from './config/js/API';
 import axios from 'axios';
-import CreateFurniture from './pages/CreateFurniture';
 import ContentContext from './config/js/content';
 import KartShop from './config/js/kart';
 import { CookiesProvider } from 'react-cookie'

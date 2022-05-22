@@ -4,7 +4,6 @@ import { Switch } from 'react-router-dom'
 import Homepage from '../../pages/Homepage/index.js';
 import Login from '../../pages/Login';
 import AuthContext from './auth';
-import CreateFurniture from '../../pages/CreateFurniture'
 import { useHistory } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 

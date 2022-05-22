@@ -13,5 +13,9 @@ module.exports = {
             qtd
         })
         return res.json(newRecord)
+    },
+    async read(req, res){
+        const RecordList = await SaleRecord.find();
+        return res.json(RecordList);
     }
 }

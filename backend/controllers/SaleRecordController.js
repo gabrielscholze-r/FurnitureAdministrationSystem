@@ -2,13 +2,15 @@ const SaleRecord = require('../models/SaleRecord')
 const mongoose = require('mongoose')
 module.exports = {
     async create(req, res){
-        const {data, price} = req.body;
-        if(!data || !price){
+        const {year, month, price,qtd} = req.body;
+        if(price==0){
             return res.status(400).json({error: "Informações em falta"})
         }
         const newRecord = await SaleRecord.create({
-            data,
-            price
+            year,
+            month,
+            price,
+            qtd
         })
         return res.json(newRecord)
     }

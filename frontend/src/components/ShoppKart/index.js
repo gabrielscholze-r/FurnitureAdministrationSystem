@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
+import API from '../../config/js/API';
 import KartShop from '../../config/js/kart';
 import './index.css'
 
 function ShoppKart() {
     const [shopkart, setKart] = useState([])
     const [total, setTotal] = useState(0)
+    const [amount, setQTD] = useState(0)
 
-    function updateList(){
+    function updateList() {
         const items = JSON.parse(localStorage.getItem('kart'));
         if (items) {
             setKart(items)
@@ -20,18 +22,19 @@ function ShoppKart() {
 
     function updateTotal(items) {
         var soma = 0
+        var q = 0
         items.map(data => {
             soma += (data.qtd * data.price)
+            q+=data.qtd
         })
         setTotal(soma)
-        console.log(total)
+        setQTD(q)
     }
 
     function delItem(data) {
         var shop = shopkart
         if (shop[shop.indexOf(data)].qtd == 1) {
             const deleted = shop.pop(shopkart.indexOf(data))
-            console.log(deleted)
             setKart(shop)
             localStorage.setItem('kart', JSON.stringify(shopkart))
         }
@@ -45,12 +48,61 @@ function ShoppKart() {
         updateList()
     }
 
-    function buy(kart){
+    async function buy() {
+        var kart = shopkart
         // get deleted dict
         // compare qtd
         // if kart_item.qtd==deleted.qtd then do nothing
         // else deleted.qtd = deleted.qtd-kart
-        
+        const sofaList = await API.get("/sofa")
+        const chairList = await API.get("/chair")
+        const tableList = await API.get("/table")
+        console.log("buying")
+        kart.map(kartItem => {
+            
+            sofaList.data.map(async sofa => {
+                if (kartItem._id == sofa._id) {
+                    const deletedItem = await API.delete(`sofa/${kartItem._id}`)
+                    if (kartItem.qtd < deletedItem.data.qtd) {
+                        deletedItem.data.qtd -= kartItem.qtd
+                        await API.post('sofa', deletedItem.data)
+                    }
+                }
+            })
+            chairList.data.map(async chair => {
+                if (kartItem._id == chair._id) {
+                    const deletedItem = await API.delete(`chair/${kartItem._id}`)
+                    if (kartItem.qtd < deletedItem.data.qtd) {
+                        deletedItem.data.qtd -= kartItem.qtd
+                        await API.post('chair', deletedItem.data)
+                    }
+                }
+            })
+            tableList.data.map(async table => {
+                if (kartItem._id == table._id) {
+                    const deletedItem = await API.delete(`table/${kartItem._id}`)
+                    if (kartItem.qtd < deletedItem.data.qtd) {
+                        deletedItem.data.qtd -= kartItem.qtd
+                        await API.post('table', deletedItem.data)
+                    }
+                }
+            })
+        })
+        const d = new Date()
+        await API.post('/record', {
+            year: d.getFullYear(),
+            month: d.getMonth()+1,
+            price: total,
+            qtd: amount
+        })
+        alert('Pedido Feito')
+        setTotal(0)
+        setQTD(0)
+        setKart([])
+        localStorage.setItem('kart', JSON.stringify([]))
+        updateList()
+        window.location.reload(false)
+
     }
 
     return (
@@ -77,7 +129,7 @@ function ShoppKart() {
             <div className="finalizar-pedido p-2">
                 <h4>Total</h4>
                 <p className="font-weight-bold text-success">R${total}</p>
-                <button className="buy-button py-1 px-3">Finalizar Pedido</button>
+                <button className="buy-button py-1 px-3" onClick={buy}>Finalizar Pedido</button>
             </div>
         </div>
     );

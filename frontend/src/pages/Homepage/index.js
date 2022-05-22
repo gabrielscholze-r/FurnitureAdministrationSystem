@@ -81,7 +81,7 @@ return (
         <header className="header">
             <div><img src={logo} alt="addfurniture" className="header-logo" /></div>
             <h4 className="content-changer" style={(content == 0) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(0) }}>Home</h4>
-            <h4 className="content-changer" style={(content == 1) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(1) }}>Create</h4>
+            <h4 className="content-changer" style={(content == 1) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(1) }}>Adicionar</h4>
             {/* <img src={shopcartblack} alt="shopping_cart" style={(content==2) ? { color: "#c50e29" } : { color: "black" }} class="kart" onClick={e => { setContent(2) }}/> */}
             {/* <h4 className="content-changer" style={(content == 2) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(2) }}>Sale</h4> */}
             <span className="material-symbols-outlined kart" style={(content == 2) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(2) }}>

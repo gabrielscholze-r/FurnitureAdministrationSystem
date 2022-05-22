@@ -129,7 +129,7 @@ function ShoppKart() {
             <div className="finalizar-pedido p-2">
                 <h4>Total</h4>
                 <p className="font-weight-bold text-success">R${total}</p>
-                <button className="buy-button py-1 px-3" onClick={buy}>Finalizar Pedido</button>
+                <button className="buy-button py-1 px-3" onClick={buy}>Finalize Order</button>
             </div>
         </div>
     );

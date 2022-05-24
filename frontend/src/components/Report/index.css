@@ -5,3 +5,19 @@
     cursor: pointer;
     text-align: center;
 }
+.title{
+    font-size: 25px;
+    font-weight: 440;
+}
+.report-info-container{
+    justify-content: space-around;
+    width: 80%;
+    border: 1px solid rgba(0, 0, 0, 0.436);
+    margin: auto;
+    display: inline-flex;
+    align-items: center;
+}
+.report-info{
+    font-size: 20px;
+    font-weight: 350;
+}

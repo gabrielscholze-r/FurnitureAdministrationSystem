@@ -4,7 +4,7 @@ import './index.css'
 function Report() {
     const [reports, setReports] = useState([])
     const [sorted, setSorted] = useState(0)
-    const [filter, setFilter] = useState(0)
+    const [filter, setFilter] = useState(1)
     useEffect(() => {
         async function getLists() {
             const list = await API.get('/record')
@@ -43,6 +43,18 @@ function Report() {
         setFilter(filter)
     }
 
+    function generateCSV(){
+        const dictKeys = Object.keys(reports[0])
+        dictKeys.pop()
+        const dictCSV = reports.map(dict => (
+            dictKeys.map(key => dict[key]).join(',')
+        ))
+        const result = "data:text/csv;charset=utf-8," + [dictKeys.join(','),...dictCSV].join('\n')
+        var encoded = encodeURI(result)
+        window.open(encoded)
+    }
+
+
     return (
         <div>
             <div>
@@ -57,20 +69,23 @@ function Report() {
                 </select>
 
             </div>
-            {reports.map(data =>
+            <div>
+                {reports.map(data =>
 
-            (
-                <div className="report-info-container p-3">
-                    <h3 className="title px-2">Date: </h3>
-                    {/* .toString().replace(" GMT-0300 (Hora padrão de Brasília)", "") */}
-                    <h4 className="report-info px-2">{new Date(data.dateTime).toLocaleString()}</h4>
-                    <h3 className="title px-2">Value: </h3>
-                    <h4 className="report-info px-2">{data.price}</h4>
-                    <h3 className="title px-2">Amount: </h3>
-                    <h4 className="report-info px-2">{data.qtd}</h4>
-                </div>
-            )
-            )}
+                (
+                    <div className="report-info-container p-3">
+                        <h3 className="title px-2">Date: </h3>
+                        {/* .toString().replace(" GMT-0300 (Hora padrão de Brasília)", "") */}
+                        <h4 className="report-info px-2">{new Date(data.dateTime).toLocaleString()}</h4>
+                        <h3 className="title px-2">Value: </h3>
+                        <h4 className="report-info px-2">{data.price}</h4>
+                        <h3 className="title px-2">Amount: </h3>
+                        <h4 className="report-info px-2">{data.qtd}</h4>
+                    </div>
+                )
+                )}
+            </div>
+            <button onClick={e=>generateCSV()}>Export</button>
         </div>
     );
 }

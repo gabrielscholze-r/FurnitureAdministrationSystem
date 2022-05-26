@@ -21,3 +21,19 @@
     font-size: 20px;
     font-weight: 350;
 }
+
+.export-button{
+    transition: 0.2s;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    outline: 0;
+    cursor: pointer;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.395), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    border: 0;
+    background-color: #fff;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+}
+.export-button:hover{
+    background-color: rgba(255, 255, 255, 0.522);
+}

@@ -116,8 +116,8 @@ function Report() {
                 )
                 )}
             </div>
-            <button onClick={e => generateCSV()}>Export</button>
-            <button onClick={e => { console.log(generateReport(reports, "month")) }}>Generate Report</button>
+            <button className="export-button" onClick={e => generateCSV()}>Export</button>
+            <button className="export-button" onClick={e => { console.log(generateReport(reports, "month")) }}>Generate Report</button>
         </div>
     );
 }

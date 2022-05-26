@@ -43,15 +43,46 @@ function Report() {
         setFilter(filter)
     }
 
-    function generateCSV(){
+    function generateCSV() {
         const dictKeys = Object.keys(reports[0])
         dictKeys.pop()
         const dictCSV = reports.map(dict => (
             dictKeys.map(key => dict[key]).join(',')
         ))
-        const result = "data:text/csv;charset=utf-8," + [dictKeys.join(','),...dictCSV].join('\n')
+        const result = "data:text/csv;charset=utf-8," + [dictKeys.join(','), ...dictCSV].join('\n')
         var encoded = encodeURI(result)
         window.open(encoded)
+    }
+
+    function generateReport(list, key) {
+        const result = list.reduce((a,{_id,month,dateTime,price,qtd,__v})=>{
+            a[month] = a[month] || {_id,month,dateTime,price,qtd,__v};
+            a[month].price += price;
+            a[month].qtd+=qtd;
+            return a;
+        },{})
+        Object.entries(result).map(data => {
+            delete data[1]["_id"]
+            delete data[1]["__v"]
+            delete data[1]["dateTime"]
+        });
+        const dictKeys = Object.entries(result).map(data => {
+            return Object.keys(data[1])
+        }).pop();
+
+        const listDicts = []
+        Object.entries(result).map(data => {
+            listDicts.push(data[1])
+        })
+
+        const dictCSV = listDicts.map(dict => (
+            dictKeys.map(key => dict[key]).join(',')
+        ))
+        const csv = "data:text/csv;charset=utf-8," + [dictKeys.join(','), ...dictCSV].join('\n')
+        var encoded = encodeURI(csv)
+        window.open(encoded)
+
+        
     }
 
 
@@ -85,7 +116,8 @@ function Report() {
                 )
                 )}
             </div>
-            <button onClick={e=>generateCSV()}>Export</button>
+            <button onClick={e => generateCSV()}>Export</button>
+            <button onClick={e => { console.log(generateReport(reports, "month")) }}>Generate Report</button>
         </div>
     );
 }

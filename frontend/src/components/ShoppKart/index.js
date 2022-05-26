@@ -90,6 +90,7 @@ function ShoppKart() {
         })
         const d = new Date()
         await API.post('/record', {
+            month: d.getMonth(),
             dateTime: d.getTime(),
             price: total,
             qtd: amount

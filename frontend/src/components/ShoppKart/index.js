@@ -95,7 +95,7 @@ function ShoppKart() {
             price: total,
             qtd: amount
         })
-        alert('Pedido Feito')
+        alert('Order placed')
         setTotal(0)
         setQTD(0)
         setKart([])

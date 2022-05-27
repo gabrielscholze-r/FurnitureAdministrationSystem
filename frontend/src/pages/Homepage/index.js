@@ -84,7 +84,7 @@ function Homepage() {
                     shopping_cart
                 </span>
                 <h4 className="content-changer" style={(content == 3) ? { color: "#c50e29" } : { color: "black" }} onClick={e => { setContent(3) }}>Report</h4>
-                <div className="px-5"><button className="exitbutton" role="button" onClick={e => { logoff() }}>Sair</button></div>
+                <div className="px-5"><button className="exitbutton" role="button" onClick={e => { logoff() }}>Logoff</button></div>
             </header>
             {
                 {

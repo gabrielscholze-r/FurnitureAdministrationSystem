@@ -32,12 +32,12 @@ export default function CreateFurniture() {
     return (
         <div className="body">
             <div className="under-header">
-                <h1>Adicionar Móvel</h1>
+                <h1>Add Furniture</h1>
                 <Alert show={show} variant="success" className="success-alert">
-                    <Alert.Heading>Adicionado com sucesso!</Alert.Heading>
+                    <Alert.Heading>Added to database!</Alert.Heading>
                 </Alert>
                 <div className="creation-container">
-                    <h3 className="subtitle">Tipo</h3>
+                    <h3 className="subtitle">Type</h3>
                     <div className="form-field-radio px-5">
                         <p className="label">Sofa</p>
                         <input type='radio' name="furniture" value="sofa" className="radio-button" onChange={e => setFurniture(e.target.value)} /><br />

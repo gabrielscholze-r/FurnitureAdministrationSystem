@@ -5,7 +5,6 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-5.0-%2347A248?logo=mongodb)
 
 Sistema completo para gestão de loja de móveis com:
-- 🔐 Autenticação segura
 - 🛒 Carrinho de compras
 - 📊 Relatórios em CSV
 - 📱 Interface responsiva
